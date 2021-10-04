@@ -53,7 +53,9 @@ open class CropImageActivity :
         val bundle = intent.getBundleExtra(CropImage.CROP_IMAGE_EXTRA_BUNDLE)
         cropImageUri = bundle?.getParcelable(CropImage.CROP_IMAGE_EXTRA_SOURCE)
         options = bundle?.getParcelable(CropImage.CROP_IMAGE_EXTRA_OPTIONS) ?: CropImageOptions()
-
+        binding.nextBtn.setOnClickListener {
+            cropImage()
+        }
         if (savedInstanceState == null) {
             if (cropImageUri == null || cropImageUri == Uri.EMPTY) {
                 if (CropImage.isExplicitCameraPermissionRequired(this)) {
